@@ -16,11 +16,11 @@ public class Matrix {
 	private Integer[][] grid = null;
 
 	public void printMatrix () {
-		grid = new Integer[row][col];
+		this.grid = new Integer[row][col];
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				grid[i][j] = (int)Math.round(Math.random());
-				System.out.print(grid[i][j] + " ");
+				this.grid[i][j] = (int)Math.round(Math.random());
+				System.out.print(this.grid[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -32,30 +32,38 @@ public class Matrix {
 			for (int j = 0; j < col; j++) {
 				
 				if (i == 0 || i == col - 1 || j == 0 || j == row - 1 ) {
-					nextMatrix[i][j] = grid[i][j]; 
+					nextMatrix[i][j] = this.grid[i][j]; 
+				} else {
+					int sum = 0;
+					int neightbour = checkNeighbour(this.grid,i,j);
+					
+					int state = this.grid[i][j];
+					
+					if (state == 0 && neightbour == 3) {
+						nextMatrix[i][j] = 1;
+					} else if (state == 1 && (neightbour < 2 || neightbour > 3)) {
+						nextMatrix[i][j] = 0;
+					} else {
+						nextMatrix[i][j] = state;
+					}
 				}
 				
-				
-				
-				
-				int sum = 0;
-				int neightbour = checkNeighbour(grid);
-				
 //				grid[i][j] = (int)Math.round(Math.random());
-				System.out.print(grid[i][j] + " ");
+				System.out.print(this.grid[i][j] + " ");
 			}
 			System.out.println();
 		}
 	}
 	
-	public int checkNeighbour(Integer[][] grid) {
+	public int checkNeighbour(Integer[][] grid, int x, int y) {
 		int sum = 0;
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				sum += grid[i][j];
+		
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				sum += grid[x + i][y + j];
 			}
-			System.out.println();
 		}
+		
 		sum -= grid[row][col];
 		return sum;
 	}
