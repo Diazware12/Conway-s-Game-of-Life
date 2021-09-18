@@ -49,10 +49,11 @@ public class Matrix {
 				}
 				
 //				grid[i][j] = (int)Math.round(Math.random());
-				System.out.print(this.grid[i][j] + " ");
+				System.out.print(nextMatrix[i][j] + " ");
 			}
 			System.out.println();
 		}
+		this.grid = nextMatrix;
 	}
 	
 	public int checkNeighbour(Integer[][] grid, int x, int y) {
@@ -64,7 +65,7 @@ public class Matrix {
 			}
 		}
 		
-		sum -= grid[row][col];
+		sum -= grid[x][y];
 		return sum;
 	}
 
