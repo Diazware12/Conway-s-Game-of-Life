@@ -13,8 +13,12 @@ public class Matrix {
 		this.col = col;
 	}
 	
-	private Integer[][] grid = null;	
+	private Integer[][] grid;	
 	
+	public Integer[][] getGrid() {
+		return grid;
+	}
+
 	public void initialMatrix () {
 		
 		this.grid = new Integer[row][col];

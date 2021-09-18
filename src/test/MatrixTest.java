@@ -1,6 +1,8 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,27 +10,22 @@ import matrix.Matrix;
 
 class MatrixTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
-	void test() {		
-		
-		int row = 5;
-		int col = 5;
-		
-		Integer[][] matrixTest = null;
-		matrixTest = new Integer[row][col];
-		
-		
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				matrixTest[i][j] = (int)Math.round(Math.random());
-			}
-		}
+	void initialTest() {		
 		
 		Matrix obj1 = new Matrix();
 		
 		obj1.setRow(5);
 		obj1.setCol(5);
 		obj1.initialMatrix();
+		Integer[][] matrixResult = obj1.getGrid();
+		
+		boolean result = false;
+		if (obj1.getGrid() != null) {
+			result = true;
+		}		
+		assertEquals(true ,result);
 	}
 
 }
