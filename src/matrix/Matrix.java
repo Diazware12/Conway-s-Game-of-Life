@@ -13,64 +13,81 @@ public class Matrix {
 		this.col = col;
 	}
 	
-	private Integer[][] grid = null;
-
-	public void printMatrix () {
+	private Integer[][] grid = null;	
+	
+	public void initialMatrix () {
+		
 		this.grid = new Integer[row][col];
+		
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				this.grid[i][j] = (int)Math.round(Math.random());
+			}
+		}
+		
+	}
+	
+	
+	public void printMatrix() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				this.grid[i][j] = (int)Math.round(Math.random());
+				
+//				if (this.grid[i][j] == 0) {
+//					System.out.print(". ");
+//				} else {
+//					System.out.print("* ");
+//				}
 				System.out.print(this.grid[i][j] + " ");
 			}
 			System.out.println();
 		}
+		
 	}
 	
-	public void printNextMatrix () {
+	public void nextMatrix () {
+		
 		Integer[][] nextMatrix = new Integer[row][col];
+		
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				
 				if (i == 0 || i == col - 1 || j == 0 || j == row - 1 ) {
 					nextMatrix[i][j] = this.grid[i][j]; 
 				} else {
-					int sum = 0;
+
 					int neightbour = checkNeighbour(this.grid,i,j);
 					
-					int state = this.grid[i][j];
+					int currLocation = this.grid[i][j];
 					
-					if (state == 0 && neightbour == 3) {
+					if (currLocation == 0 && neightbour == 3) {
 						nextMatrix[i][j] = 1;
-					} else if (state == 1 && (neightbour < 2 || neightbour > 3)) {
+					} else if (currLocation == 1 && (neightbour < 2 || neightbour > 3)) {
 						nextMatrix[i][j] = 0;
 					} else {
-						nextMatrix[i][j] = state;
+						nextMatrix[i][j] = currLocation;
 					}
 				}
-				
-//				grid[i][j] = (int)Math.round(Math.random());
-				System.out.print(nextMatrix[i][j] + " ");
+
 			}
-			System.out.println();
+			
 		}
 		this.grid = nextMatrix;
 	}
 	
-	public int checkNeighbour(Integer[][] grid, int x, int y) {
+	public int checkNeighbour(Integer[][] matrix, int x, int y) {
 		int sum = 0;
 		
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
-				sum += grid[x + i][y + j];
+				sum += matrix[x + i][y + j];
 			}
 		}
 		
-		sum -= grid[x][y];
+		int currLocation = matrix[x][y];
+		sum -= currLocation;
+		
 		return sum;
-	}
-
-	public Matrix() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

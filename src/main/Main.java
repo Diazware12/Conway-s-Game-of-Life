@@ -10,15 +10,17 @@ public class Main {
 		Scanner scan = new Scanner(System.in); 
 		
 		Matrix foo = new Matrix();
-		foo.setRow(3);
-		foo.setCol(3);
+		foo.setRow(5);
+		foo.setCol(5);
+		foo.initialMatrix();
 		foo.printMatrix();
 	    System.out.print("count enter value: ");
 
 	    int enter = scan.nextInt();  // Read user input
 	    while (enter != 0) {
 	    	String temp = scan.nextLine();
-	    	foo.printNextMatrix();
+	    	foo.nextMatrix();
+	    	foo.printMatrix();
 	    	enter--;
 	    }
 	}
