@@ -31,7 +31,6 @@ public class Matrix {
 		
 	}
 	
-	
 	public void printMatrix() {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
@@ -44,7 +43,6 @@ public class Matrix {
 			}
 			System.out.println();
 		}
-		
 	}
 	
 	public void nextMatrix () {
@@ -70,9 +68,7 @@ public class Matrix {
 						nextMatrix[i][j] = currLocation;
 					}
 				}
-
 			}
-			
 		}
 		this.grid = nextMatrix;
 	}

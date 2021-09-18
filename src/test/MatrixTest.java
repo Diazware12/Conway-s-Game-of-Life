@@ -10,7 +10,6 @@ import matrix.Matrix;
 
 class MatrixTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	void initialTest() {		
 		
@@ -25,10 +24,10 @@ class MatrixTest {
 		if (obj1.getGrid() != null) {
 			result = true;
 		}		
+		
 		assertEquals(true ,result);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	void nextMatrixTest() {		
 		
@@ -46,6 +45,16 @@ class MatrixTest {
 		}		
 		
 		assertEquals(true ,result);
+	}
+	
+	@Test
+	void checkNeightborTest() {		
+		
+		Matrix obj1 = new Matrix();
+		Integer[][] matrixResult = {{0,1,1,0,1},{1,1,0,1,1},{0,0,1,0,0},{1,1,0,0,1},{1,1,0,1,0}};
+		int result = obj1.checkNeighbour(matrixResult, 1, 1);
+				
+		assertEquals(4 ,result);
 	}
 
 }
