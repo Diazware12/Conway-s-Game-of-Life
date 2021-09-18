@@ -10,8 +10,8 @@ public class Main {
 		Scanner scan = new Scanner(System.in); 
 		
 		Matrix foo = new Matrix();
-		foo.setRow(5);
-		foo.setCol(5);
+		foo.setRow(10);
+		foo.setCol(10);
 		foo.initialMatrix();
 		foo.printMatrix();
 	    System.out.print("count enter value: ");

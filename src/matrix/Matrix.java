@@ -35,14 +35,12 @@ public class Matrix {
 	public void printMatrix() {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				this.grid[i][j] = (int)Math.round(Math.random());
-				
-//				if (this.grid[i][j] == 0) {
-//					System.out.print(". ");
-//				} else {
-//					System.out.print("* ");
-//				}
-				System.out.print(this.grid[i][j] + " ");
+				if (this.grid[i][j] == 0) {
+					System.out.print(". ");
+				} else {
+					System.out.print("* ");
+				}
+//				System.out.print(this.grid[i][j] + " ");
 			}
 			System.out.println();
 		}
